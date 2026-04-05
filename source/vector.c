@@ -70,4 +70,13 @@ size_t get_vector_capacity(Vector* vector){
     return vector->capacity;
 }
 
+void for_each( Vector* vector, void (*func)(void*) ){
+    if (vector == NULL || func == NULL) {
+        return; // Do nothing if vector or function is NULL
+    }
+    for (size_t i = 0; i < vector->size; i++) {
+        func(vector->data[i]);
+    }
+}
+
 #endif // _VECTOR_C_
