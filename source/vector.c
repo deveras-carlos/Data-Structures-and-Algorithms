@@ -49,6 +49,23 @@ int vector_push_back(Vector* vector, void* element){
     return 0; // Return 0 on success
 }
 
+int vector_pop_back( Vector* vector, void** element ){
+    if (vector == NULL || element == NULL || vector->size == 0) {
+        return -1; // Return -1 if vector is NULL, element is NULL, or vector is empty
+    }
+    *element = vector->data[vector->size - 1];
+    vector->size--;
+    return 0; // Return 0 on success
+}
+
+int vector_set_element( Vector* vector, size_t index, void* element ){
+    if (vector == NULL || element == NULL || index >= vector->size) {
+        return -1; // Return -1 if vector is NULL, element is NULL, or index is out of bounds
+    }
+    vector->data[index] = element;
+    return 0; // Return 0 on success
+}
+
 void* get_vector_element(Vector* vector, size_t index){
     if (vector == NULL || index >= vector->size) {
         return NULL; // Return NULL if vector is NULL or index is out of bounds
@@ -77,6 +94,10 @@ void for_each( Vector* vector, void (*func)(void*) ){
     for (size_t i = 0; i < vector->size; i++) {
         func(vector->data[i]);
     }
+}
+
+size_t size_of_vector( void ){
+    return sizeof( Vector );
 }
 
 #endif // _VECTOR_C_

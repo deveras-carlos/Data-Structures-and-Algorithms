@@ -13,15 +13,19 @@ typedef struct _vector_{
 } Vector;
 
 // Function prototypes for Vector operations
-Vector* create_vector(size_t initial_capacity);
-void free_vector(Vector* vector);
-int vector_push_back(Vector* vector, void* element);
+Vector* create_vector( size_t initial_capacity );
+void free_vector( Vector* vector );
+int vector_push_back( Vector* vector, void* element );
+int vector_pop_back( Vector* vector, void** element );
+int vector_set_element( Vector* vector, size_t index, void* element );
 
-void* get_vector_element(Vector* vector, size_t index);
-size_t get_vector_size(Vector* vector);
-size_t get_vector_capacity(Vector* vector);
+void* get_vector_element( Vector* vector, size_t index );
+size_t get_vector_size( Vector* vector );
+size_t get_vector_capacity( Vector* vector );
 
 void for_each( Vector* vector, void (*func)(void*) );
+
+size_t size_of_vector( void );
 
 #else
 
@@ -30,12 +34,16 @@ typedef struct _vector_ Vector;
 extern Vector* create_vector(size_t initial_capacity);
 extern void free_vector(Vector* vector);
 extern int vector_push_back(Vector* vector, void* element);
+extern int vector_pop_back( Vector* vector, void** element );
+extern int vector_set_element( Vector* vector, size_t index, void* element );
 
 extern void* get_vector_element(Vector* vector, size_t index);
 extern size_t get_vector_size(Vector* vector);
 extern size_t get_vector_capacity(Vector* vector);
 
 extern void for_each( Vector* vector, void (*func)(void*) );
+
+extern size_t size_of_vector( void );
 
 #endif // _VECTOR_C_
 
